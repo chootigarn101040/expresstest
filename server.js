@@ -104,7 +104,10 @@ app.post('/products/update', function(req,res){
 
 });
 
+var port = process.env.PORT || 8080;
+app.listen(port, function() {
+console.log('App is running on http://localhost:' + port);
+});
 
-console.log('App is runnins at http://localhost:8080');
-app.listen(8080);
+
 
