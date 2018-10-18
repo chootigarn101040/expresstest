@@ -28,7 +28,7 @@ app.get('/index', function(req,res){
 app.get('/about', function(req,res){
     var name = 'Chootigarn Tanapibalwongsa';
     var hobbies =['Music','Movie','Programing'];
-    var dob = '19/08/1997';
+    var dob = '10/10/1997';
     res.render('pages/about',{fullname : name, hobbies : hobbies, dob : dob});   
 });
 app.get('/products', function(req,res){
@@ -89,6 +89,14 @@ app.get('/users/:id', function(req, res) {
         .catch(function(error){
             console.log('ERROR:'+error);
         })
+});
+
+app.get('/addnewproduct',function(req, res) {
+    res.render('pages/addnew');
+});
+
+app.get('/addnewuser',function(req, res) {
+    res.render('pages/adduser');
 });
 
 //Update data
