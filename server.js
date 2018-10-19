@@ -107,7 +107,14 @@ app.post('/products/update', function(req,res){
    var sql = 'update product set title = "' + title +
    '" , price = "' + price + '" where id = ' + id;  //กด alt96
    // db.none
- 
+   db.any(sql)
+   .then(function(data){
+       console.log('DATA:'+data);
+       res.render('pages/products',{products : data});
+   })
+   .catch(function(error){
+       console.log('ERROR:'+error);
+   })
    console.log('UPDATE:' + sql);
    res.redirect ('/products');
 

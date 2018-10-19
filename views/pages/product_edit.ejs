@@ -1,36 +1,51 @@
 <% include ../partials/header %>
-<form action="/products/update" method="post">
-<div class="form-group">
-  <label for="">ID</label>
-  <input type="number"
-    class="form-control" value="<%= product.id%>" name="id" id="" aria-describedby="helpId" placeholder="">
-  <small id="helpId" class="form-text text-muted">Product ID</small>
-</div>
+  <form action="/products/update" method="post">
+    <div class="form-group">
+      <label for="">ID</label>
+      <input type="number" class="form-control" value="<%= product.id%>" name="id" id="" aria-describedby="helpId" placeholder="">
+      <small id="helpId" class="form-text text-muted">Product ID</small>
+    </div>
 
-<div class="form-group">
-  <label for="">Titil</label>
-  <input type="text"
-    class="form-control" value="<%= product.title%>" name="title" id="" aria-describedby="helpId" placeholder="">
-  <small id="helpId" class="form-text text-muted">Product title</small>
-</div>
- <div class="form-group">
-   <label for="">Price</label>
-   <input type="number"
-     class="form-control" value="<%= product.price%>" name="price" id="" aria-describedby="helpId" placeholder="">
-   <small id="helpId" class="form-text text-muted">Product price</small>
- </div>
+    <div class="form-group">
+      <label for="">Titil</label>
+      <input type="text" class="form-control" value="<%= product.title%>" name="title" id="" aria-describedby="helpId" placeholder="">
+      <small id="helpId" class="form-text text-muted">Product title</small>
+    </div>
+    <div class="form-group">
+      <label for="">Price</label>
+      <input type="number" class="form-control" value="<%= product.price%>" name="price" id="" aria-describedby="helpId" placeholder="">
+      <small id="helpId" class="form-text text-muted">Product price</small>
+    </div>
 
- 
 
- <button type="submit" class="btn btn-success">Cancle</button>
- <button type="submit" class="btn btn-primary">Save</button>
- <button type="submit" class="btn btn-danger" onclick="confirmDET()">Delete</button>
-<script>
-function confirmDET(){
-  confirm("confirm delete")
-}
-</script>
-</form>
+    <div class="form-group">
+      <label for="">Create At</label>
+      <div class='input-group date' id='datetimepicker1'>
+        <input type='text' class="form-control" />
+        <span class="input-group-addon">
+          <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+        <small id="helpId" class="form-text text-muted">Create At</small>
+      </div>
+    </div>
 
-<% include ../partials/footer %>
 
+
+
+    <button type="submit" class="btn btn-success">Cancle</button>
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="submit" class="btn btn-danger" onclick="confirmDET()">Delete</button>
+    <script>
+      function confirmDET() {
+        confirm("confirm delete")
+      }
+
+      $(function () {
+        $('#datetimepicker1').datetimepicker();
+      });
+
+    </script>
+
+  </form>
+
+  <% include ../partials/footer %>
