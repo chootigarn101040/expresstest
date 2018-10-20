@@ -64,7 +64,7 @@ app.get('/products/:pid', function (req, res) {
 
 });
 //display users
-app.get('/user', function (req, res) {
+app.get('/users', function (req, res) {
 
     db.any('select * from users', )
         .then(function (data) {
@@ -76,7 +76,7 @@ app.get('/user', function (req, res) {
         })
 });
 //Routing display users
-app.get('/user/:id', function (req, res) {
+app.get('/users/:id', function (req, res) {
     var id = req.params.id;
     var sql = 'select * from users';
     if (id) {
