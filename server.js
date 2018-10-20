@@ -122,7 +122,7 @@ app.post('/products/update', function (req, res) {
 });
 
 app.get('/update', function (request, response) {
-    var time = moment().format('MMMM Do YYYY, h:mm:ss a');
+    var time = moment().format('mm/dd/yyyy');
     response.render('pages/update', { time: time });
 });
 
