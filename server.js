@@ -129,8 +129,8 @@ app.get('/update', function (request, response) {
 
 app.post('/user/update', function (req, res) {
     var id = req.body.id;
-    var title = req.body.email;
-    var price = req.body.password;
+    var email = req.body.email;
+    var password = req.body.password;
     var sql = 'update user set email = "' + email +
         '" , password = "' + password + '" where id = ' + id;  //กด alt96
     // db.none
