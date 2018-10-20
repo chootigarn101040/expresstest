@@ -11,10 +11,12 @@
     <tbody>
     <% users.forEach(function(user){ %>
         <tr>
-            <td scope="row"><%= user.id%></td>
-            <td><%= user.email%></td>
-            <td><%= user.password%></td>
-            <td><a name="" id="" class="btn btn-warning" href="/user/<%= user.id %>" role="button" >Edit</a></td>
+            <td scope="row"><%= users.id%></td>
+            <td><%= users.email%></td>
+            <td><%= users.password%></td>
+            <td>
+                <a name="" id="" class="btn btn-warning" href="/user/<%= users.id %>" role="button" >Edit</a>
+            </td>
         </tr>
         <% }); %>
     </tbody>
