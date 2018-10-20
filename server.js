@@ -121,12 +121,12 @@ app.post('/products/update', function (req, res) {
 
 });
 
-app.get('/update', function (request, response) {
-    var time = moment().format('mm/dd/yyyy');
-    response.render('pages/update', { time: time });
-});
+//app.get('/update', function (request, response) {
+    //var time = moment().format('mm/dd/yyyy');
+   // response.render('pages/update', { time: time });
+// });
 
-
+//Update data
 app.post('/user/update', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
