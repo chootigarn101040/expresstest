@@ -121,6 +121,26 @@ app.post('/products/update', function(req,res){
 
 });
 
+app.post('/user/update', function(req,res){
+    var id = req.body.id;
+    var title = req.body.email;
+    var price = req.body.password;
+    var sql = 'update user set email = "' + email +
+    '" , password = "' + password + '" where id = ' + id;  //กด alt96
+    // db.none
+    db.any(sql)
+    .then(function(data){
+        console.log('DATA:'+data);
+        res.render('pages/user',{user : data});
+    })
+    .catch(function(error){
+        console.log('ERROR:'+error);
+    })
+    console.log('UPDATE:' + sql);
+    res.redirect ('/user');
+ 
+ });
+
 var port = process.env.PORT || 8080;
 app.listen(port, function() {
 console.log('App is running on http://localhost:' + port);
