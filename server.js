@@ -64,18 +64,19 @@ app.get('/products/:pid', function(req,res){
     
 });
 //display users
-app.get('/users', function(req,res){
+app.get('/user', function(req,res){
+    
     db.any('select * from users',)
         .then(function(data){
             console.log('DATA:'+data);
-            res.render('pages/users',{users : data});
+            res.render('pages/user',{users : data});
         })
         .catch(function(error){
             console.log('ERROR:'+error);
         })
 });
 //Routing display users
-app.get('/users/:id', function(req, res) {
+app.get('/user/:id', function(req, res) {
     var id = req.params.id;
     var sql = 'select * from users';
     if(id){
@@ -84,7 +85,7 @@ app.get('/users/:id', function(req, res) {
     db.any(sql)
         .then(function(data){
             console.log('DATA:'+data);
-            res.render('pages/users',{users : data});
+            res.render('pages/user',{users : data});
         })
         .catch(function(error){
             console.log('ERROR:'+error);

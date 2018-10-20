@@ -17,21 +17,13 @@
       <small id="helpId" class="form-text text-muted">Product price</small>
     </div>
 
-
     <div class="form-group">
-      <label for="">Create At</label>
-      <div class='input-group date' id='datetimepicker1'>
-        <input type='text' class="form-control" />
-        <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-        <small id="helpId" class="form-text text-muted">Create At</small>
-      </div>
-    </div>
-
-
-
-
+        <label for="">Create At</label>
+  <input type="date" name="date">
+   <small id="helpId" class="form-text text-muted">Create At</small>
+        </div>
+    
+        
     <button type="submit" class="btn btn-success">Cancle</button>
     <button type="submit" class="btn btn-primary">Save</button>
     <button type="submit" class="btn btn-danger" onclick="confirmDET()">Delete</button>
@@ -39,11 +31,6 @@
       function confirmDET() {
         confirm("confirm delete")
       }
-
-      $(function () {
-        $('#datetimepicker1').datetimepicker();
-      });
-
     </script>
 
   </form>
