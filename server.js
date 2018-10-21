@@ -276,6 +276,33 @@ app.get('/purchases/:pid', function (req, res) {
 });
 
 //add new purchases
+// app.get('/addnewpurchases', function (req, res) {
+//     res.render('pages/addpurchases');
+// });
+
+// app.post('/purchases/addnewpurchases', function (req, res) {
+//     //var id = req.body.id;
+//     var name = req.body.name;
+//     var address = req.body.address;
+//     var state = req.body.state;
+//     var zipcode = req.body.zipcode;
+//     var user_id = req.body.user_id;
+//     var sql = `INSERT INTO purchases ( name, address, state, zipcode, user_id)
+//     VALUES ( '${name}', '${address}', '${state}', '${zipcode}', '${user_id}')`;
+//     //db.none 
+//     console.log('UPDATE:' + sql);
+//     db.query(sql)
+//         .then(function (data) {
+//             console.log('DATA:' + data);
+//             res.redirect('/purchases')
+
+//         })
+//         .catch(function (error) {
+//             console.log('ERROR:' + error);
+//         })
+
+// })
+
 app.get('/addnewpurchases', function (req, res) {
     res.render('pages/addpurchases');
 });
@@ -302,6 +329,7 @@ app.post('/purchases/addnewpurchases', function (req, res) {
         })
 
 })
+
 
 // update purchases
 app.post('/purchases/update', function (req, res) {
