@@ -15,16 +15,16 @@
         </tr>
     </thead>
     <tbody>
-    <% purchases.forEach(function(purchas){ %>
+    <% purchases.forEach(function(purchase){ %>
         <tr>
-            <td scope="row"><%= purchas.id%></td>
-            <td><%= purchas.name%></td>
-            <td><%= purchas.address%></td>
-            <td><%= purchas.state%></td>
-            <td><%= purchas.zipcode%></td>
-            <td><%= purchas.user_id%></td>
+            <td scope="row"><%= purchase.id%></td>
+            <td><%= purchase.name%></td>
+            <td><%= purchase.address%></td>
+            <td><%= purchase.state%></td>
+            <td><%= purchase.zipcode%></td>
+            <td><%= purchase.user_id%></td>
             <td>
-                <a name="" id="" class="btn btn-warning" href="/purchases/<%= purchas.id %>" role="button" >Edit</a> 
+                <a name="" id="" class="btn btn-warning" href="/purchases/<%= purchase.id %>" role="button" >Edit</a> 
 
             </td>
         </tr>

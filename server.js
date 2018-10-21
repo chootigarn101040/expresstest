@@ -315,7 +315,7 @@ app.post('/purchases/addnewpurchases', function (req, res) {
     var zipcode = req.body.zipcode;
     var userid = req.body.userid;
     var sql = `INSERT INTO purchases ( name, address, state, zipcode, user_id)
-    VALUES ( '${name}', '${address}', '${state}', '${zipcode}', '${userid}')`;
+    VALUES ( '${name}', '${address}', '${state}', '${zipcode}', '${user_id}')`;
     //db.none 
     console.log('UPDATE:' + sql);
     db.query(sql)
@@ -376,6 +376,41 @@ app.get('/purdelete/:id', function (req, res) {
         })
 
 })
+
+
+/////purchase_items
+app.get('/purchase_items', function (req, res) {
+    var id = req.param('id');
+    var sql = 'select * from purchase_items';
+    if (id) {
+        sql += ' where id = ' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/purchase_items', { purchase_items: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+});
+
+//display purchase_items
+app.get('/purchase_items/:pid', function (req, res) {
+    var pid = req.params.pid;
+    var sql = "select * from purchase_items where id =" + pid;
+    db.any(sql)
+        .then(function (data) {
+            //console.log('DATA:'+data);
+            res.render('pages/', { product: data[0] });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+
+});
 
 
 // app.get('/creat_at', function (request, response) {

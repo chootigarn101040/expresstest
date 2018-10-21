@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Purchase ID</th>
+            <th>Product ID</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>State</th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+    <% purchase_items.forEach(function(purchase_item){ %>
+        <tr>
+            <td scope="row"><%= purchase_item.purchase_id%></td>
+            <td><%= purchase_item.product_id%></td>
+            <td><%= purchase_item.price%></td>
+            <td><%= purchase_item.quantity%></td>
+            <td><%= purchase_item.state%></td>
+            
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<% include ../partials/footer %>
