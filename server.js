@@ -155,7 +155,7 @@ app.get('/users', function (req, res) {
 
 });
 
-//display products
+//display users
 app.get('/users/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = "select * from users where id =" + pid;
@@ -171,6 +171,73 @@ app.get('/users/:pid', function (req, res) {
 
 });
 
+//add new user
+app.get('/addnewuser', function (req, res) {
+    res.render('pages/adduser');
+});
+
+app.post('/users/addnewuser', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `INSERT INTO users (id, email, password)
+    VALUES ('${id}', '${email}', '${password}')`;
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.query(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
+// update user
+app.post('/users/update', function (req, res) {
+    var id = req.body.id;
+    var email = req.body.email;
+    var password = req.body.password;
+    var sql = `update users 
+    set email =  '${email}' , password = '${password}'
+    where id = '${id}'`;
+
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
+// delete user
+app.get('/usdelete/:id', function (req, res) {
+
+    var id = req.params.id;
+    var sql = 'DELETE FROM users';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/users')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
 
 
 
