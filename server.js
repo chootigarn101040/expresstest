@@ -192,10 +192,10 @@ app.post('/user/update', function (req, res) {
 
 });
 
-//app.get('/update', function (request, response) {
-//var time = moment().format('mm/dd/yyyy');
-// response.render('pages/update', { time: time });
-// });
+app.get('/creat_at', function (request, response) {
+var time = moment().format('mm/dd/yyyy');
+response.render('pages/update', { time: time });
+ });
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
