@@ -17,21 +17,13 @@
       <small id="helpId" class="form-text text-muted">User Password</small>
     </div>
 
-    <div class="form-group">
-        <label for="">Create At</label>
-  <input type="date" name="date">
-   <small id="helpId" class="form-text text-muted">Create At</small>
-        </div>
+    
     
         
-    <button type="submit" class="btn btn-success">Cancle</button>
+    <a class="btn btn-success" href="/products" role="button">Cancle</a>
     <button type="submit" class="btn btn-primary">Save</button>
-    <button type="submit" class="btn btn-danger" onclick="confirmDET()">Delete</button>
-    <script>
-      function confirmDET() {
-        confirm("Do you want to delete user")
-      }
-    </script>
+    <a class="btn btn-danger" onclick="confirm('Do you want to delete product');" href="/product/delete" role="button">Delete</a>
+
     
   </form>
 

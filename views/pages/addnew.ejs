@@ -1,5 +1,5 @@
 <% include ../partials/header %>
-<div class="container">
+
 <form action="/products/update" method="post">
 <div class="form-group">
   <label for="">ID</label>
@@ -22,15 +22,13 @@
  </div>
  <div class="form-group"> 
   <label for="">Create At</label>
-  <input type="date" class="form-control" name="create_at" id aria-describedby="helpId" placeholder>
+  <input type="date" class="form-control"  name="create_at" id aria-describedby="helpId" placeholder="">
   <small id="helpId" class="form-text text-muted">Create At</small>
 </div>
 
-
  <button type="submit" class="btn btn-success">Add New</button>
  
-
 </form>
-</div>
+
 <% include ../partials/footer %>
 

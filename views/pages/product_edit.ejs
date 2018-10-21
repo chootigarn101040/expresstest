@@ -17,21 +17,19 @@
       <small id="helpId" class="form-text text-muted">Product price</small>
     </div>
 
-    <div class="form-group">
-        <label for="">Create At</label>
-  <input type="date" name="date">
-   <small id="helpId" class="form-text text-muted">Create At</small>
-        </div>
+    <div class="form-group"> 
+      <label for="">Create At</label>
+      <input type="text" class="form-control" value="Mon Oct 10 2012 17.00.00 GMT+0000 (UCT)" name="create_at" id aria-describedby="helpId" placeholder disabled>
+      <small id="helpId" class="form-text text-muted">Create At</small>
+    </div>
+    
     
 
-    <button type="submit" class="btn btn-success">Cancle</button>
+    <a class="btn btn-success" href="/products" role="button">Cancle</a>
     <button type="submit" class="btn btn-primary">Save</button>
-    <button type="submit" class="btn btn-danger" onclick="confirmDET()">Delete</button>
-    <script>
-      function confirmDET() {
-        confirm("Do you want to delete product")
-      }
-    </script>
+    <a class="btn btn-danger" onclick="confirm('Do you want to delete product');" href="/product/delete" role="button">Delete</a>
+
+   
 
   </form>
 

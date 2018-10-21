@@ -63,13 +63,82 @@ app.get('/products/:pid', function (req, res) {
 
 
 });
+//add new product
+app.get('/addnewproduct', function (req, res) {
+    res.render('pages/addnew');
+});
+
+
+app.post('/products/addnewproduct', function(req,res){
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `INSERT INTO products (id, title, price)
+    VALUES ('${id}', '${title}', '${price}')`;
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.query(sql)
+    .then(function (data) {
+        console.log('DATA:' + data);
+        res.redirect('/products')
+
+    })
+    .catch(function (error) {
+        console.log('ERROR:' + error);
+    })
+    
+})
+
+// update product
+app.post('/products/update', function(req,res){
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `update products 
+    set title =  '${title}' , price = '${price}'
+    where id = '${id}'`;
+
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+    .then(function (data) {
+        console.log('DATA:' + data);
+        res.redirect('/products')
+
+    })
+    .catch(function (error) {
+        console.log('ERROR:' + error);
+    })
+    
+})
+
+// delete product
+app.get('/delete/:id', function(req,res){
+    var id = req.params.id;
+    var sql = 'DELETE FROM products';
+    if(id){
+        sql += ' where id ='+ id; 
+    }
+    db.any(sql)
+    .then(function (data) {
+        console.log('DATA:' + data);
+        res.redirect('/products')
+
+    })
+    .catch(function (error) {
+        console.log('ERROR:' + error);
+    })
+    
+})
+
+
 //display users
 app.get('/user', function (req, res) {
 
     db.any('select * from users', )
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/user', { users: data });
+            res.render('pages/user', { user: data });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -92,39 +161,14 @@ app.get('/user/:id', function (req, res) {
         })
 });
 
-app.get('/addnewproduct', function (req, res) {
-    res.render('pages/addnew');
-});
+
 
 app.get('/addnewuser', function (req, res) {
     res.render('pages/adduser');
 });
 
-//Update data
-app.post('/products/update', function (req, res) {
-    var id = req.body.id;
-    var title = req.body.title;
-    var price = req.body.price;
-    var sql = 'update product set title = "' + title +
-        '" , price = "' + price + '" where id = ' + id;  //กด alt96
-    // db.none
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/products', { products: data });
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-    console.log('UPDATE:' + sql);
-    res.redirect('/products');
 
-});
 
-//app.get('/update', function (request, response) {
-    //var time = moment().format('mm/dd/yyyy');
-   // response.render('pages/update', { time: time });
-// });
 
 //Update data
 app.post('/user/update', function (req, res) {
@@ -146,6 +190,11 @@ app.post('/user/update', function (req, res) {
     res.redirect('/user');
 
 });
+
+//app.get('/update', function (request, response) {
+//var time = moment().format('mm/dd/yyyy');
+// response.render('pages/update', { time: time });
+// });
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
