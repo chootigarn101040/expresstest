@@ -26,8 +26,8 @@ app.get('/index', function (req, res) {
     res.render('pages/index');
 });
 app.get('/about', function (req, res) {
-    var name = 'Chootigarn Tanapibalwongsa';
-    var hobbies = ['Music', 'Movie', 'Programing'];
+    var name = 'CHOOTIGARN TANAPIBALWONGSA';
+    var hobbies = ['MUSIC', 'MOVIE', 'PLAYGAMES'];
     var dob = '10/10/1997';
     res.render('pages/about', { fullname: name, hobbies: hobbies, dob: dob });
 });
