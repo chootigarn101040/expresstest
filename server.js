@@ -134,7 +134,7 @@ app.get('/prodelete/:id', function (req, res) {
 
 
 /////USER////
-app.get('/user', function (req, res) {
+app.get('/users', function (req, res) {
     var id = req.param('id');
     var sql = 'select * from users';
     if (id) {
@@ -143,7 +143,7 @@ app.get('/user', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/user', { usesr: data });
+            res.render('pages/users', { users: data });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -152,7 +152,7 @@ app.get('/user', function (req, res) {
 });
 
 //display products
-app.get('/user/:pid', function (req, res) {
+app.get('/users/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = "select * from users where id =" + pid;
     db.any(sql)
