@@ -133,130 +133,46 @@ app.get('/prodelete/:id', function (req, res) {
 })
 
 
-//display users
+/////USER////
 app.get('/user', function (req, res) {
     var id = req.param('id');
-    var sql = 'select * from users ';
+    var sql = 'select * from users';
     if (id) {
-        sql += ' where id =' + id;
+        sql += ' where id = ' + id;
     }
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/user', { user: data })
-
+            res.render('pages/user', { usesr: data });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
         })
+
 });
 
-//users pid
+//display products
 app.get('/user/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = "select * from users where id =" + pid;
-
     db.any(sql)
         .then(function (data) {
-
-            res.render('pages/user_edit', { user: data[0], time: times });
-
+            //console.log('DATA:'+data);
+            res.render('pages/', { product: data[0] });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
-
         })
+
 
 });
 
-// user
-app.get('/user/:id', function (req, res) {
-
-    var id = res.param.id;
-    var sql = 'select * from users';
-    if (id) {
-        sql += ' where id =' + id
-
-    }
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/user', { user: data })
-        })
-        .catch(function (error) {
-
-        })
-});
 
 
-//add new user
-app.get('/addnewuser', function (req, res) {
-    res.render('pages/adduser');
-});
 
 
-app.post('/user/addnewuser', function (req, res) {
-    var id = req.body.id;
-    var email = req.body.email;
-    var password = req.body.password;
-    var sql = `INSERT INTO users (id, email, password)
-    VALUES ('${id}', '${email}', '${password}')`;
-    //db.none 
-    console.log('UPDATE:' + sql);
-    db.query(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/user')
 
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
 
-})
-
-// update user
-app.post('/user/update', function (req, res) {
-    var id = req.body.id;
-    var email = req.body.email;
-    var password = req.body.password;
-    var sql = `update users 
-    set email =  '${email}' , password = '${password}'
-    where id = '${id}'`;
-
-    //db.none 
-    console.log('UPDATE:' + sql);
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/user')
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
-})
-
-// delete user
-app.get('/prodelete/:id', function (req, res) {
-
-    var id = req.params.id;
-    var sql = 'DELETE FROM users';
-    if (id) {
-        sql += ' where id =' + id;
-    }
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/user')
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
-})
 
 // app.get('/creat_at', function (request, response) {
 // var time = moment().format('mm/dd/yyyy');
