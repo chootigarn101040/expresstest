@@ -11,13 +11,13 @@
         </tr>
     </thead>
     <tbody>
-    <% products.forEach(function(product){ %>
+    <% purchases.forEach(function(purchas){ %>
         <tr>
-            <td scope="row"><%= product.id%></td>
-            <td><%= product.title%></td>
-            <td><%= product.price%></td>
+            <td scope="row"><%= purchas.id%></td>
+            <td><%= purchas.title%></td>
+            <td><%= purchas.price%></td>
             <td>
-                <a name="" id="" class="btn btn-warning" href="/products/<%= product.id %>" role="button" >Edit</a> 
+                <a name="" id="" class="btn btn-warning" href="/purchases/<%= purchas.id %>" role="button" >Edit</a> 
 
             </td>
         </tr>

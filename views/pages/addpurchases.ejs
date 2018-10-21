@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+<form action="/purchases/addnewpurchases" method="post">
+<div class="form-group">
+  <label for="">ID</label>
+  <input type="number"
+    class="form-control" value=" " name="id" id="" aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Help Text</small>
+</div>
+
+<div class="form-group">
+  <label for="">Title</label>
+  <input type="text"
+    class="form-control" value=" " name="title" id="" aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Help Text</small>
+</div>
+ <div class="form-group">
+   <label for="">Price</label>
+   <input type="number"
+     class="form-control" value=" " name="price" id="" aria-describedby="helpId" placeholder="">
+   <small id="helpId" class="form-text text-muted">Help Text</small>
+ </div>
+ <div class="form-group"> 
+  <label for="">Create At</label>
+  <input type="date" class="form-control"  name="create_at" id aria-describedby="helpId" placeholder="">
+  <small id="helpId" class="form-text text-muted">Create At</small>
+</div>
+
+ <button type="submit" class="btn btn-success">Add New</button>
+ 
+</form>
+
+<% include ../partials/footer %>
+
+

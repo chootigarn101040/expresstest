@@ -240,6 +240,108 @@ app.get('/usdelete/:id', function (req, res) {
 })
 
 
+/////Purchases
+app.get('/purchases', function (req, res) {
+    var id = req.param('id');
+    var sql = 'select * from purchases';
+    if (id) {
+        sql += ' where id = ' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/purchases', { purchases: data });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+});
+
+//display purchases
+app.get('/purchases/:pid', function (req, res) {
+    var pid = req.params.pid;
+    var sql = "select * from purchases where id =" + pid;
+    db.any(sql)
+        .then(function (data) {
+            //console.log('DATA:'+data);
+            res.render('pages/purchas_edit', { purchas: data[0] });
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+
+});
+
+//add new purchases
+app.get('/addnewpurchases', function (req, res) {
+    res.render('pages/addpurchases');
+});
+
+app.post('/purchases/addnewpurchases', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `INSERT INTO purchases (id, email, password)
+    VALUES ('${id}', '${email}', '${password}')`;
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.query(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/purchases')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
+// update purchases
+app.post('/purchases/update', function (req, res) {
+    var id = req.body.id;
+    var title = req.body.title;
+    var price = req.body.price;
+    var sql = `update purchases 
+    set title =  '${title}' , price = '${price}'
+    where id = '${id}'`;
+
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/purchases')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
+// delete purchases
+app.get('/purdelete/:id', function (req, res) {
+
+    var id = req.params.id;
+    var sql = 'DELETE FROM purchases';
+    if (id) {
+        sql += ' where id =' + id;
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/purchases')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
 
 // app.get('/creat_at', function (request, response) {
 // var time = moment().format('mm/dd/yyyy');
