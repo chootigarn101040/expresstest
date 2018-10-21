@@ -69,7 +69,7 @@ app.get('/addnewproduct', function (req, res) {
 });
 
 
-app.post('/products/addnewproduct', function(req,res){
+app.post('/products/addnewproduct', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -78,19 +78,19 @@ app.post('/products/addnewproduct', function(req,res){
     //db.none 
     console.log('UPDATE:' + sql);
     db.query(sql)
-    .then(function (data) {
-        console.log('DATA:' + data);
-        res.redirect('/products')
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/products')
 
-    })
-    .catch(function (error) {
-        console.log('ERROR:' + error);
-    })
-    
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 })
 
 // update product
-app.post('/products/update', function(req,res){
+app.post('/products/update', function (req, res) {
     var id = req.body.id;
     var title = req.body.title;
     var price = req.body.price;
@@ -101,35 +101,35 @@ app.post('/products/update', function(req,res){
     //db.none 
     console.log('UPDATE:' + sql);
     db.any(sql)
-    .then(function (data) {
-        console.log('DATA:' + data);
-        res.redirect('/products')
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/products')
 
-    })
-    .catch(function (error) {
-        console.log('ERROR:' + error);
-    })
-    
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 })
 
 // delete product
-app.get('/prodelete/:id', function(req,res){
-  
+app.get('/prodelete/:id', function (req, res) {
+
     var id = req.params.id;
     var sql = 'DELETE FROM products';
-    if(id){
-        sql += ' where id ='+ id; 
+    if (id) {
+        sql += ' where id =' + id;
     }
     db.any(sql)
-    .then(function (data) {
-        console.log('DATA:' + data);
-        res.redirect('/products')
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/products')
 
-    })
-    .catch(function (error) {
-        console.log('ERROR:' + error);
-    })
-    
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 })
 
 
@@ -138,7 +138,7 @@ app.get('/user', function (req, res) {
     var id = req.param('id');
     var sql = 'select * from users ';
     if (id) {
-        sql += ' where id =' + id ;
+        sql += ' where id =' + id;
     }
     db.any(sql)
         .then(function (data) {
@@ -151,7 +151,7 @@ app.get('/user', function (req, res) {
         })
 });
 
-//Routing display users
+//users pid
 app.get('/user/:pid', function (req, res) {
     var pid = req.params.pid;
     var sql = "select * from users where id =" + pid;
@@ -159,7 +159,7 @@ app.get('/user/:pid', function (req, res) {
     db.any(sql)
         .then(function (data) {
 
-            res.render('pages/user_edit', { user: data[0] })
+            res.render('pages/user_edit', { user: data[0], time: times });
 
         })
         .catch(function (error) {
@@ -167,7 +167,25 @@ app.get('/user/:pid', function (req, res) {
 
         })
 
+});
 
+// user
+app.get('/user/:id', function (req, res) {
+
+    var id = res.param.id;
+    var sql = 'select * from users';
+    if (id) {
+        sql += ' where id =' + id
+
+    }
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/user', { user: data })
+        })
+        .catch(function (error) {
+
+        })
 });
 
 
@@ -177,7 +195,7 @@ app.get('/addnewuser', function (req, res) {
 });
 
 
-app.post('/user/addnewuser', function(req,res){
+app.post('/user/addnewuser', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
@@ -186,19 +204,19 @@ app.post('/user/addnewuser', function(req,res){
     //db.none 
     console.log('UPDATE:' + sql);
     db.query(sql)
-    .then(function (data) {
-        console.log('DATA:' + data);
-        res.redirect('/user')
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/user')
 
-    })
-    .catch(function (error) {
-        console.log('ERROR:' + error);
-    })
-    
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 })
 
-// update product
-app.post('/user/update', function(req,res){
+// update user
+app.post('/user/update', function (req, res) {
     var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
@@ -209,35 +227,35 @@ app.post('/user/update', function(req,res){
     //db.none 
     console.log('UPDATE:' + sql);
     db.any(sql)
-    .then(function (data) {
-        console.log('DATA:' + data);
-        res.redirect('/user')
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/user')
 
-    })
-    .catch(function (error) {
-        console.log('ERROR:' + error);
-    })
-    
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 })
 
-// delete product
-app.get('/prodelete/:id', function(req,res){
-  
+// delete user
+app.get('/prodelete/:id', function (req, res) {
+
     var id = req.params.id;
     var sql = 'DELETE FROM users';
-    if(id){
-        sql += ' where id ='+ id; 
+    if (id) {
+        sql += ' where id =' + id;
     }
     db.any(sql)
-    .then(function (data) {
-        console.log('DATA:' + data);
-        res.redirect('/user')
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.redirect('/user')
 
-    })
-    .catch(function (error) {
-        console.log('ERROR:' + error);
-    })
-    
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
 })
 
 // app.get('/creat_at', function (request, response) {
