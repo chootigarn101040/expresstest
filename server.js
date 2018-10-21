@@ -281,10 +281,13 @@ app.get('/addnewpurchases', function (req, res) {
 
 app.post('/purchases/addnewpurchases', function (req, res) {
     var id = req.body.id;
-    var title = req.body.title;
-    var price = req.body.price;
-    var sql = `INSERT INTO purchases (id, email, password)
-    VALUES ('${id}', '${email}', '${password}')`;
+    var name = req.body.name;
+    var address = req.body.address;
+    var state = req.body.state;
+    var zipcode = req.body.zipcode;
+    var user_id = req.body.user_id;
+    var sql = `INSERT INTO purchases (id, name, address, state, zipcode, user_id)
+    VALUES ('${id}', '${name}', '${address}', '${state}', '${zipcode}', '${user_id}')`;
     //db.none 
     console.log('UPDATE:' + sql);
     db.query(sql)
@@ -302,10 +305,13 @@ app.post('/purchases/addnewpurchases', function (req, res) {
 // update purchases
 app.post('/purchases/update', function (req, res) {
     var id = req.body.id;
-    var title = req.body.title;
-    var price = req.body.price;
+    var name = req.body.name;
+    var address = req.body.address;
+    var state = req.body.state;
+    var zipcode = req.body.zipcode;
+    var user_id = req.body.user_id;
     var sql = `update purchases 
-    set title =  '${title}' , price = '${price}'
+    set name =  '${name}' , address = '${address}' ,  state =  '${state}' , zipcode = '${zipcode}' ,  user_id =  '${user_id}' 
     where id = '${id}'`;
 
     //db.none 

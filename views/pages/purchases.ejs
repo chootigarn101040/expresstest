@@ -3,8 +3,12 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Price</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>User_ID</th>
+
 
             <th><a  class="btn btn-success"  href="/addnewpurchases" role="button">Add New </a></th>
             
@@ -14,8 +18,11 @@
     <% purchases.forEach(function(purchas){ %>
         <tr>
             <td scope="row"><%= purchas.id%></td>
-            <td><%= purchas.title%></td>
-            <td><%= purchas.price%></td>
+            <td><%= purchas.name%></td>
+            <td><%= purchas.address%></td>
+            <td><%= purchas.state%></td>
+            <td><%= purchas.zipcode%></td>
+            <td><%= purchas.user_id%></td>
             <td>
                 <a name="" id="" class="btn btn-warning" href="/purchases/<%= purchas.id %>" role="button" >Edit</a> 
 
