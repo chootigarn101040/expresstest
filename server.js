@@ -134,13 +134,12 @@ app.get('/prodelete/:id', function(req,res){
 
 
 //display users
-app.get('/user/:pid', function (req, res) {
-    var pid = req.param.pid;
-    var sql = "select * from users where id =" + pid;
-    db.any(sql)
+app.get('/user', function (req, res) {
+   
+    db.any("select * from users")
         .then(function (data) {
-           // console.log('DATA:' + data);
-            res.render('pages/user_edit', { user: data[0] });
+           console.log('DATA:' + data);
+            res.render('pages/user', { user: data });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -148,16 +147,15 @@ app.get('/user/:pid', function (req, res) {
 });
 
 //Routing display users
-app.get('/user', function (req, res) {
-    var id = req.params('id');
-    var sql = 'select * from users';
+app.get('/user/:pid', function (req, res) {
+    
     if (id) {
         sql += ' where id = ' + id;
     }
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/user', { user: data });
+            res.render('pages/user_edit', { user: data[0] });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
