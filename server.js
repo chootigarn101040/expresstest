@@ -135,11 +135,16 @@ app.get('/prodelete/:id', function(req,res){
 
 //display users
 app.get('/user', function (req, res) {
-   
-    db.any("select * from users")
+    var id = req.param('id');
+    var sql = 'select * from users ';
+    if (id) {
+        sql += ' where id =' + id ;
+    }
+    db.any(sql)
         .then(function (data) {
-           console.log('DATA:' + data);
-            res.render('pages/user', { user: data });
+            console.log('DATA:' + data);
+            res.render('pages/user', { user: data })
+
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -148,18 +153,21 @@ app.get('/user', function (req, res) {
 
 //Routing display users
 app.get('/user/:pid', function (req, res) {
-    
-    if (id) {
-        sql += ' where id = ' + id;
-    }
+    var pid = req.params.pid;
+    var sql = "select * from users where id =" + pid;
+
     db.any(sql)
         .then(function (data) {
-            console.log('DATA:' + data);
-            res.render('pages/user_edit', { user: data[0] });
+
+            res.render('pages/user_edit', { user: data[0] })
+
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
+
         })
+
+
 });
 
 
