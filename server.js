@@ -177,7 +177,7 @@ app.get('/addnewuser', function (req, res) {
 });
 
 app.post('/users/addnewuser', function (req, res) {
-    var id = req.body.id;
+    //var id = req.body.id;
     var email = req.body.email;
     var password = req.body.password;
     var sql = `INSERT INTO users (id, email, password)
@@ -195,6 +195,7 @@ app.post('/users/addnewuser', function (req, res) {
         })
 
 })
+
 
 // update user
 app.post('/users/update', function (req, res) {
@@ -280,7 +281,7 @@ app.get('/addnewpurchases', function (req, res) {
 });
 
 app.post('/purchases/addnewpurchases', function (req, res) {
-    var id = req.body.id;
+    //var id = req.body.id;
     var name = req.body.name;
     var address = req.body.address;
     var state = req.body.state;
