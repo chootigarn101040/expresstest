@@ -31,6 +31,10 @@ app.get('/about', function (req, res) {
     var dob = '10/10/1997';
     res.render('pages/about', { fullname: name, hobbies: hobbies, dob: dob });
 });
+
+
+
+//// product
 app.get('/products', function (req, res) {
     var id = req.param('id');
     var sql = 'select * from products';
@@ -158,7 +162,7 @@ app.get('/users/:pid', function (req, res) {
     db.any(sql)
         .then(function (data) {
             //console.log('DATA:'+data);
-            res.render('pages/', { product: data[0] });
+            res.render('pages/product_edit', { user: data[0] });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -166,10 +170,6 @@ app.get('/users/:pid', function (req, res) {
 
 
 });
-
-
-
-
 
 
 
