@@ -308,14 +308,14 @@ app.get('/addnewpurchases', function (req, res) {
 });
 
 app.post('/purchases/addnewpurchases', function (req, res) {
-    //var id = req.body.id;
+    
     var name = req.body.name;
     var address = req.body.address;
     var state = req.body.state;
     var zipcode = req.body.zipcode;
-    var user_id = req.body.user_id;
+    var userid = req.body.userid;
     var sql = `INSERT INTO purchases ( name, address, state, zipcode, user_id)
-    VALUES ( '${name}', '${address}', '${state}', '${zipcode}', '${user_id}')`;
+    VALUES ( '${name}', '${address}', '${state}', '${zipcode}', '${userid}')`;
     //db.none 
     console.log('UPDATE:' + sql);
     db.query(sql)
