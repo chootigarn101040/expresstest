@@ -113,12 +113,12 @@ app.post('/products/update', function(req,res){
 })
 
 // delete product
-app.get('/prodelete/:pid', function(req,res){
+app.get('/prodelete/:id', function(req,res){
   
-    var id = req.params.pid;
+    var id = req.params.id;
     var sql = 'DELETE FROM products';
     if(id){
-        sql += ' where id ='+ pid; 
+        sql += ' where id ='+ id; 
     }
     db.any(sql)
     .then(function (data) {
@@ -192,10 +192,10 @@ app.post('/user/update', function (req, res) {
 
 });
 
-app.get('/creat_at', function (request, response) {
-var time = moment().format('mm/dd/yyyy');
-response.render('pages/update', { time: time });
- });
+// app.get('/creat_at', function (request, response) {
+// var time = moment().format('mm/dd/yyyy');
+// response.render('pages/update', { time: time });
+//  });
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
