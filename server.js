@@ -113,7 +113,7 @@ app.post('/products/update', function(req,res){
 })
 
 // delete product
-app.get('/product/delete/:id', function(req,res){
+app.get('/delete/:id', function(req,res){
     var id = req.params.id;
     var sql = 'DELETE FROM products';
     if(id){
