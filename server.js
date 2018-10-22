@@ -313,6 +313,7 @@ app.get('/purchase_items/:pid', function (req, res) {
 
 });
 
+/////report_purchase
 app.get('/report_purchase', function (req, res) {
     
     var sql = `select name,price,address
@@ -334,10 +335,10 @@ app.get('/report_purchase', function (req, res) {
 
 })
 
-
+//////report_porducts
 app.get('/report_porducts', function (req, res) {
     
-    var sql = `select title,name,zipcode
+    var sql = `select name,title,zipcode
     from products INNER JOIN purchases ON products.id = purchases.id
     order by zipcode DESC
     limit 25`;

@@ -31,31 +31,30 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="Products">Product</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="users">User</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="purchases">Purchases</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="purchase_items">Purchases_Items</a>
-                </li>
-                
+               
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CRUD</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="Products">Product</a>
+                            <a class="dropdown-item" href="users">User </a>
+                            <a class="dropdown-item" href="purchases">Purchases </a>
+                            <a class="dropdown-item" href="purchase_items">Purchases_Items </a>
+                            
+                        </div>
+                    </li>
+
                  <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Report</a>
                     <div class="dropdown-menu" aria-labelledby="dropdownId">
-                        <a class="dropdown-item" href="report_purchase">ReportPurchases </a>
+                        <a class="dropdown-item" href="report_purchase">Report Purchases </a>
+                        <a class="dropdown-item" href="report_porducts">Report Porducts </a>
                         
                     </div>
                 </li>
                 
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                    <input class="form-control text-right"  id="myInput" type="text" placeholder="Search..">
             </form>
         </div>
     </nav>
