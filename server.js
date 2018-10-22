@@ -335,7 +335,8 @@ app.get('/report_purchase', function (req, res) {
 
 })
 
-//////report_porduct
+
+/////reports_product
 app.get('/reports_product', function (req, res) {
     
     var sql = `select title,name,zipcode
@@ -356,6 +357,7 @@ app.get('/reports_product', function (req, res) {
         })
 
 })
+
 
 
 
