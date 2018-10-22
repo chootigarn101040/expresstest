@@ -335,10 +335,10 @@ app.get('/report_purchase', function (req, res) {
 
 })
 
-//////report_porducts
+//////report_porduct
 app.get('/report_porduct', function (req, res) {
     
-    var sql = `select name,title,zipcode
+    var sql = `select title,name,zipcode
     from products INNER JOIN purchases ON products.id = purchases.id
     order by zipcode DESC
     limit 25`;
