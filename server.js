@@ -318,7 +318,7 @@ app.get('/report_purchase', function (req, res) {
     var sql = `select name,price,address
     from purchases INNER JOIN purchase_items ON purchases.id = purchase_items.id
     order by price DESC
-    limit 10`;
+    limit 25`;
 
     //db.none 
     console.log('UPDATE:' + sql);
