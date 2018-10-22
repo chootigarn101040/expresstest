@@ -348,7 +348,7 @@ app.get('/report_porduct', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/report_porduct',{ report : data });
+            res.render('pages/report_porduct',{ reportp : data });
 
         })
         .catch(function (error) {
