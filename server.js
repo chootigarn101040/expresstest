@@ -335,6 +335,29 @@ app.get('/report_purchase', function (req, res) {
 })
 
 
+app.get('/report_porducts', function (req, res) {
+    
+    var sql = `select title,name,zipcode
+    from products INNER JOIN purchases ON products.id = purchases.id
+    order by zipcode DESC
+    limit 25`;
+
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/report_porducts',{ report : data });
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
+
+
 
 // app.get('/creat_at', function (request, response) {
 // var time = moment().format('mm/dd/yyyy');
