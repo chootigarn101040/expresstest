@@ -336,7 +336,7 @@ app.get('/report_purchase', function (req, res) {
 })
 
 //////report_porduct
-app.get('/report_product', function (req, res) {
+app.get('/reports_product', function (req, res) {
     
     var sql = `select title,name,zipcode
     from products INNER JOIN purchases ON products.id = purchases.id
@@ -348,7 +348,7 @@ app.get('/report_product', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/report_product',{ report : data });
+            res.render('pages/reports_product',{ reportp : data });
 
         })
         .catch(function (error) {

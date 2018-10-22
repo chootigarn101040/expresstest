@@ -6,7 +6,7 @@
         background-size: cover;
     }
 </style>
-<h1><center>Top 25 Products</center></h1>
+<h1><center>Top 25 Product</center></h1>
 <table class="table">
     <thead>
         <tr>
@@ -17,11 +17,11 @@
         </tr>
     </thead>
     <tbody id="myTable">
-    <% report.forEach(function(report){ %>
+    <% reports.forEach(function(reportp){ %>
         <tr>
-            <td scope="row"><%=report.title%></td>
-            <td><%=report.name%></td>
-            <td><%=report.zipcode%></td>
+            <td scope="row"><%=reportp.title%></td>
+            <td><%=reportp.name%></td>
+            <td><%=reportp.zipcode%></td>
            
         </tr>
         <% }); %>
