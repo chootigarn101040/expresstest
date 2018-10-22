@@ -19,7 +19,7 @@
             <th>User_ID</th>
 
 
-            <th><a  class="btn btn-success"  href="/addnewpurchases" role="button">Add New </a></th>
+           
             
         </tr>
     </thead>
@@ -32,10 +32,7 @@
             <td><%= purchase.state%></td>
             <td><%= purchase.zipcode%></td>
             <td><%= purchase.user_id%></td>
-            <td>
-                <a name="" id="" class="btn btn-warning" href="/purchases/<%= purchase.id %>" role="button" >Edit</a> 
-
-            </td>
+            
         </tr>
         <% }); %>
     </tbody>

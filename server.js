@@ -267,7 +267,7 @@ app.get('/purchases/:pid', function (req, res) {
     db.any(sql)
         .then(function (data) {
             //console.log('DATA:'+data);
-            res.render('pages/purchas_edit', { purchas: data[0] });
+            res.render('pages/', { purchase: data[0] });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
@@ -276,82 +276,7 @@ app.get('/purchases/:pid', function (req, res) {
 
 });
 
-//add new purchases
 
-
-app.get('/addnewpurchases', function (req, res) {
-    res.render('pages/addpurchases');
-});
-
-app.post('/purchases/addnewpurchases', function (req, res) {
-    
-    var name = req.body.name;
-    var address = req.body.address;
-    var state = req.body.state;
-    var zipcode = req.body.zipcode;
-    var userid = req.body.userid;
-    var sql = `INSERT INTO purchases ( name, address, state, zipcode, user_id)
-    VALUES ( '${name}', '${address}', '${state}', '${zipcode}', '${user_id}')`;
-    //db.none 
-    console.log('UPDATE:' + sql);
-    db.query(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/purchases')
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
-})
-
-
-// update purchases
-app.post('/purchases/update', function (req, res) {
-    var id = req.body.id;
-    var name = req.body.name;
-    var address = req.body.address;
-    var state = req.body.state;
-    var zipcode = req.body.zipcode;
-    var user_id = req.body.user_id;
-    var sql = `update purchases 
-    set name =  '${name}' , address = '${address}' ,  state =  '${state}' , zipcode = '${zipcode}' ,  user_id =  '${user_id}' 
-    where id = '${id}'`;
-
-    //db.none 
-    console.log('UPDATE:' + sql);
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/purchases')
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
-})
-
-// delete purchases
-app.get('/purdelete/:id', function (req, res) {
-
-    var id = req.params.id;
-    var sql = 'DELETE FROM purchases';
-    if (id) {
-        sql += ' where id =' + id;
-    }
-    db.any(sql)
-        .then(function (data) {
-            console.log('DATA:' + data);
-            res.redirect('/purchases')
-
-        })
-        .catch(function (error) {
-            console.log('ERROR:' + error);
-        })
-
-})
 
 
 /////purchase_items
@@ -379,7 +304,7 @@ app.get('/purchase_items/:pid', function (req, res) {
     db.any(sql)
         .then(function (data) {
             //console.log('DATA:'+data);
-            res.render('pages/', { product: data[0] });
+            res.render('pages/', { purchase_item: data[0] });
         })
         .catch(function (error) {
             console.log('ERROR:' + error);
