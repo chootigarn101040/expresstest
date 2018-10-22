@@ -313,6 +313,27 @@ app.get('/purchase_items/:pid', function (req, res) {
 
 });
 
+app.get('/report_purchase', function (req, res) {
+    
+    var sql = `select name,price,address
+    from purchases INNER JOIN purchase_items ON purchases.id = purchase_items.id
+    order by name ASC`;
+
+    //db.none 
+    console.log('UPDATE:' + sql);
+    db.any(sql)
+        .then(function (data) {
+            console.log('DATA:' + data);
+            res.render('pages/report_purchase')
+
+        })
+        .catch(function (error) {
+            console.log('ERROR:' + error);
+        })
+
+})
+
+
 
 // app.get('/creat_at', function (request, response) {
 // var time = moment().format('mm/dd/yyyy');

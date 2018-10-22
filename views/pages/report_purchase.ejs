@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Address</th>
+           
+        </tr>
+    </thead>
+    <tbody id="myTable">
+    <% report.forEach(function(report){ %>
+        <tr>
+            <td scope="row"><%= report.name%></td>
+            <td><%= report.price%></td>
+            <td><%= report.address%></td>
+           
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+
+
+<% include ../partials/footer %>
