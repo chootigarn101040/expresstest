@@ -324,7 +324,7 @@ app.get('/report_purchase', function (req, res) {
     db.any(sql)
         .then(function (data) {
             console.log('DATA:' + data);
-            res.render('pages/report_purchase')
+            res.render('pages/report_purchase',{ report : data });
 
         })
         .catch(function (error) {
